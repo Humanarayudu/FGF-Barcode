@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FGF Brands - Barcode Card Generator</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <div class="header fade-in">
+        <div class="logo-container">
+          <div class="fgf-logo">
+            <span class="logo-text">FGF</span>
+          </div>
+        </div>
+        <h1>Barcode Card Generator</h1>
+        <p>Create secure access cards with ease</p>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Form -->
+        <div class="form-container fade-in">
+          <h3>Card Details</h3>
+
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Enter username" />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter password" />
+          </div>
+
+          <div class="button-group">
+            <button class="btn-primary" onclick="generateCard()">
+              Generate Card
+            </button>
+            <button class="btn-secondary" onclick="flipCard()">
+              Flip Card
+            </button>
+            <button class="btn-secondary" onclick="printCard()">
+              Print PDF
+            </button>
+            <button class="btn-secondary" onclick="downloadJPEG()">
+              Download
+            </button>
+          </div>
+        </div>
+
+        <!-- Preview -->
+        <div class="preview-section fade-in">
+          <div class="preview-header">
+            <h3>Card Preview</h3>
+            <p>Click "Flip Card" to view both sides</p>
+          </div>
+
+          <div class="card-container">
+            <div class="card" id="front">
+              <div class="card-logo-small">FGF</div>
+              <div class="content">
+                <h3>USERNAME</h3>
+                <svg id="barcode-user"></svg>
+              </div>
+            </div>
+
+            <div class="card back" id="back">
+              <div class="card-logo-small">FGF</div>
+              <div class="content">
+                <h3>PASSWORD</h3>
+                <svg id="barcode-pass"></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Print Pages -->
+    <div id="print-pages">
+      <div class="print-sheet">
+        <div class="page" id="print-front">
+          <div class="card-logo-small">FGF</div>
+          <div class="content">
+            <h3>USERNAME</h3>
+            <svg id="print-barcode-user"></svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="print-sheet">
+        <div class="page" id="print-back">
+          <div class="card-logo-small">FGF</div>
+          <div class="content">
+            <h3>PASSWORD</h3>
+            <svg id="print-barcode-pass"></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
