@@ -63,6 +63,10 @@ function flipCard() {
 }
 
 function printCard() {
+  if (!username || !password) {
+    alert("Generate a card first!");
+    return;
+  }
   window.print();
 }
 
@@ -196,3 +200,4 @@ function downloadCardAsJPEG(cardElement, filename) {
 
   img.src = url;
 }
+
