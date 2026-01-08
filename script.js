@@ -37,7 +37,7 @@ function generateCard() {
     format: "CODE128",
     width: passWidth,
     height: 80,
-    displayValue: false,
+    displayValue:true,
     lineColor: "#000000",
     background: "transparent",
   });
@@ -60,7 +60,7 @@ function generateCard() {
     format: "CODE128",
     width: passWidth,
     height: 80,
-    displayValue: false,
+    displayValue: true,
     lineColor: "#000000",
     background: "transparent",
   });
@@ -213,3 +213,4 @@ function downloadCardAsJPEG(cardElement, filename) {
 
   img.src = url;
 }
+
