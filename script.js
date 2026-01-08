@@ -26,7 +26,7 @@ function generateCard() {
   JsBarcode("#barcode-user", username, {
     format: "CODE128",
     width: userWidth,
-    height: 90,
+    height: 80,
     displayValue: true,
     fontSize: Math.min(14, 400 / username.length),
     lineColor: "#000000",
@@ -215,6 +215,7 @@ function downloadCardAsJPEG(cardElement, filename) {
 
   img.src = url;
 }
+
 
 
 
