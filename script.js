@@ -37,7 +37,7 @@ function generateCard() {
     format: "CODE128",
     width: passWidth,
     height: 80,
-    displayValue: false,
+    displayValue: true,
     fontSize: Math.min(14, 400 / password.length),
     lineColor: "#000000",
     background: "transparent",
@@ -61,7 +61,7 @@ function generateCard() {
     format: "CODE128",
     width: passWidth,
     height: 80,
-      displayValue: false,
+      displayValue: true,
     fontSize: Math.min(14, 400 / password.length),
     lineColor: "#000000",
     background: "transparent",
@@ -215,6 +215,7 @@ function downloadCardAsJPEG(cardElement, filename) {
 
   img.src = url;
 }
+
 
 
 
