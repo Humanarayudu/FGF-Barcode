@@ -195,6 +195,11 @@ button:active {
   perspective: 1000px;
   margin: 0 auto;
 }
+svg {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
 
 .card {
   width: 100%;
@@ -229,7 +234,7 @@ button:active {
 }
 
 .content {
-  width: calc(100% - 0.5in);
+  width: calc(100%);
   padding: 0.3in;
   box-sizing: border-box;
   display: flex;

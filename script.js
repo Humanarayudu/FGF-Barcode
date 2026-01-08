@@ -7,18 +7,26 @@ function generateCard() {
     return;
   }
 
-  const dpi = 96;
-  const maxWidthPx = (6 - 1) * dpi;
-  const calcWidth = (textLength) => Math.min(2, maxWidthPx / (textLength * 11));
+  const containerPx = 3.37 * 96;
+  const DPI = 96;
 
-  const userWidth = calcWidth(username.length);
-  const passWidth = calcWidth(password.length);
+  // Card = 3.37in
+  // Padding = 0.3in left + 0.3in right
+  const usableWidthPx = (3.37 - 0.6) * DPI; // ≈ 266px
+
+  function calcCode128Width(charCount) {
+    const modules = charCount * 11 + 35;
+    const width = usableWidthPx / modules;
+    return Math.max(1, Math.min(2, width));
+  }
+  const userWidth = calcCode128Width(username.length);
+  const passWidth = calcCode128Width(password.length);
 
   // Web preview - black barcodes for green background
   JsBarcode("#barcode-user", username, {
     format: "CODE128",
     width: userWidth,
-    height: 80,
+    height: 90,
     displayValue: true,
     fontSize: Math.min(14, 400 / username.length),
     lineColor: "#000000",
@@ -63,7 +71,7 @@ function flipCard() {
 }
 
 function printCard() {
-   const username = document.getElementById("username").value.trim();
+  const username = document.getElementById("username").value.trim();
   const password = document.getElementById("password").value.trim();
   if (!username || !password) {
     alert("Generate a card first!");
@@ -171,16 +179,19 @@ function downloadCardAsJPEG(cardElement, filename) {
   img.onload = function () {
     // Scale up the barcode to match web display size
     // Web display uses 96 DPI, we're rendering at 300 DPI
-    const scaleFactor = 3.125; // 300/96 = 3.125
-    const scaledWidth = img.width * scaleFactor;
-    const scaledHeight = img.height * scaleFactor;
+    const svgRect = svg.getBoundingClientRect();
+    const scale = dpi / 96;
+
+    const drawWidth = svgRect.width * scale;
+    const drawHeight = svgRect.height * scale;
 
     // Center the barcode (matching web display position)
-    const x = (canvas.width - scaledWidth) / 2;
-    const y = (canvas.height - scaledHeight) / 2 + 100;
 
     // Draw scaled barcode
-    ctx.drawImage(img, x, y, scaledWidth, scaledHeight);
+    const x = (canvas.width - drawWidth) / 2;
+    const y = (canvas.height - drawHeight) / 2 + 100;
+
+    ctx.drawImage(img, x, y, drawWidth, drawHeight);
 
     canvas.toBlob(
       function (blob) {
@@ -202,5 +213,3 @@ function downloadCardAsJPEG(cardElement, filename) {
 
   img.src = url;
 }
-
-
