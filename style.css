@@ -93,6 +93,42 @@ label {
   font-size: 0.95rem;
 }
 
+/* Password Input Wrapper */
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper input {
+  padding-right: 50px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease;
+  border-radius: 6px;
+}
+
+.toggle-password:hover {
+  color: #8bc53f;
+  background: rgba(139, 197, 63, 0.1);
+}
+
+.toggle-password svg {
+  width: 20px;
+  height: 20px;
+}
+
 input {
   width: 100%;
   padding: 14px 18px;
